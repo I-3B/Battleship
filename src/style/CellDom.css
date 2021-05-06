@@ -1,0 +1,9 @@
+.cell {
+    cursor: pointer;
+    background-color: aliceblue;
+    min-width: 10%;
+    min-height: 10%;
+}
+.cell:hover {
+    filter: brightness(0.9);
+}
