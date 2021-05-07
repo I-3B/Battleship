@@ -1,5 +1,5 @@
-import GameBoard from '../../factories/GameBoard';
-import Ship from '../../factories/Ship';
+import GameBoard from '../factories/GameBoard';
+import Ship from '../factories/Ship';
 
 test('GameBoard - 1 - should return an array that contains { usedBy:null, hit:false} values', () => {
     expect(GameBoard(2).getBoard()).toMatchObject([
@@ -30,13 +30,12 @@ test('GameBoard - 3 - placing a ship vertically should make { usedBy: ship } for
     expect(gameBoard.getBoard()[2][1].usedBy).toEqual(ship);
 });
 
-test('GameBoard - 4 - receiving an attack should make { hit: true } for the receiving cell(in the board and the ship)', () => {
+test('GameBoard - 4 - receiving an attack should make { hit: true } for the receiving cell in the board', () => {
     let gameBoard = GameBoard(3);
     let ship = Ship(2);
     gameBoard.place(0, 0, 'x', ship);
     gameBoard.receiveAttack(0, 0);
     expect(gameBoard.getBoard()[0][0].hit).toBeTruthy();
-    expect(ship.getHits()[0]).toBeTruthy();
 });
 
 test('GameBoard - 5 - receiving attacks in all the ship cells should make the ship sink', () => {

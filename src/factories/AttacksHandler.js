@@ -1,5 +1,5 @@
 const AttacksHandler = (p1, p2) => {
-    const humanAttacked = async (cell) => {
+    const humanAttacked = (cell) => {
         const [y, x] = [
             Number(cell.id[cell.id.length - 2]),
             Number(cell.id[cell.id.length - 1]),
@@ -8,7 +8,7 @@ const AttacksHandler = (p1, p2) => {
         const state = board.checkCell(y, x);
         changeColor(cell, state);
         if (state === 'ship' || state === 'empty') {
-            await board.receiveAttack(y, x);
+            board.receiveAttack(y, x);
         } else if (state === 'attacked') {
         }
         return state;
@@ -34,7 +34,6 @@ const AttacksHandler = (p1, p2) => {
                 document.querySelector('#' + p1.user + y + '' + x),
                 state
             );
-            console.log(state);
         }
     };
     return {

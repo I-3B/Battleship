@@ -1,4 +1,18 @@
 #game {
     display: flex;
+    flex-direction: column;
+    margin: 1em auto;
+}
+#message {
+    border-radius: 5px;
+    font-size: 2em;
+    padding: 1em 2em;
+    margin: 2em auto;
+    background-color: aliceblue;
+    transition: color 0.5s;
+    box-shadow: 5px 5px 10px black;
+}
+#boards-container {
+    display: flex;
     margin: auto;
 }

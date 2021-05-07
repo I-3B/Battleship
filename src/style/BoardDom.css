@@ -1,7 +1,10 @@
 .board {
+    overflow: hidden;
+    border-radius: 5px;
     margin: auto 5em;
     width: 25em;
     height: 25em;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
+    box-shadow: 5px 5px 10px black;
 }

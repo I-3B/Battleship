@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Game from './component/GameDom';
-export const GAME_BOARD_SIZE = 4;
+export const GAME_BOARD_SIZE = 10;
 const App = () => {
     return (
         <div id="app">

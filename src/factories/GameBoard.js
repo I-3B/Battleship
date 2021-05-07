@@ -31,7 +31,6 @@ const GameBoard = (size) => {
     const place = (yStart, xStart, shipDirection, ship) => {
         ships.push(ship);
         if (shipDirection === 'y') {
-            ship.setCoordinate(yStart, shipDirection);
             for (let i = yStart; i < yStart + ship.getLength(); i++) {
                 board[i][xStart].usedBy = ship;
             }
@@ -45,7 +44,6 @@ const GameBoard = (size) => {
                 }
             }
         } else if (shipDirection === 'x') {
-            ship.setCoordinate(xStart, shipDirection);
             for (let i = xStart; i < xStart + ship.getLength(); i++) {
                 board[yStart][i].usedBy = ship;
             }
@@ -65,11 +63,7 @@ const GameBoard = (size) => {
         let cell = board[y][x];
         cell.hit = true;
         if (cell.usedBy !== null) {
-            if (cell.usedBy.getCoordinate().direction === 'x')
-                cell.usedBy.hitAt(x - cell.usedBy.getCoordinate().start);
-            else if (cell.usedBy.getCoordinate().direction === 'y')
-                cell.usedBy.hitAt(y - cell.usedBy.getCoordinate().start);
-            console.log(cell.usedBy.getHits(), '   ', cell.hit);
+            cell.usedBy.hit();
         }
         return true;
     };

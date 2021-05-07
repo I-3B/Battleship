@@ -1,7 +1,15 @@
 import { GAME_BOARD_SIZE } from '../App';
+import Ship from './Ship';
 
-const ShipPlacer = (player, originalShips, finished) => {
-    const ships = [...originalShips];
+const ShipPlacer = (player, shipsLength, finished) => {
+    const ships = (() => {
+        let s = [];
+        for (let ship of shipsLength) {
+            s.push(Ship(ship));
+        }
+        return s;
+    })();
+
     if (player.user === 'human') {
         const initialColor = 'aliceblue';
         const canBeUsedColor = 'yellowgreen';
@@ -123,15 +131,13 @@ const ShipPlacer = (player, originalShips, finished) => {
             } else
                 switch (event.type) {
                     case 'mouseover':
-                        if (ships[itr])
-                            changeColor(event.target, ships[itr].getLength());
+                        changeColor(event.target, ships[itr].getLength());
                         break;
                     case 'mouseout':
-                        if (ships[itr])
-                            removeColor(event.target, ships[itr].getLength());
+                        removeColor(event.target, ships[itr].getLength());
                         break;
                     case 'mouseup':
-                        if (ships[itr]) placeShip(event.target, ships[itr]);
+                        placeShip(event.target, ships[itr]);
                         break;
                     default:
                 }

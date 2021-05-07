@@ -1,19 +1,13 @@
 const Ship = (ShipSize) => {
     const length = ShipSize;
-    const hits = new Array(ShipSize).fill(false);
-    console.log(hits);
-    let coordinate = {};
+    let hits = 0;
     return {
         isSunk: () => {
-            return !hits.includes(false);
+            return hits === length;
         },
         getLength: () => length,
-        hitAt: (index) => (hits[index] = true),
+        hit: () => hits++,
         getHits: () => hits,
-        setCoordinate: (start, direction) => {
-            coordinate = { start, direction };
-        },
-        getCoordinate: () => coordinate,
     };
 };
 export default Ship;
